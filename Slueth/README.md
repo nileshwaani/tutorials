@@ -39,7 +39,7 @@ After restaring the services, whenever you send any request to these services, y
 A brief explanation of the highlighted data is given below:
 
 | Information      | Explanation|
-| -----------------|:-------------:|
+| -----------------|:-------------|
 |bank-service      |The name of the application.|
 |04243c345de0e039  |Trace ID. It is attached to the main request. It remains same for all downstream calls.|
 |e01dd2854ee0b039  |Span ID. It is attached to a service call. If the main request involves calls to 4 services, then each service call will have its own Span ID.|
