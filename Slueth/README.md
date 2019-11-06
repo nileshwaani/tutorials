@@ -20,14 +20,14 @@ Let’s see an example by adding tracing in our [banking application](https://gi
 
 The only step is to add _spring-cloud-starter-sleuth_ dependency in our services.
 
-{% highlight gradle %}
+```gradle
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
-{% endhighlight %}
+```
 
 After restaring the services, whenever you send any request to these services, you will see few details in the logs.
 
@@ -38,7 +38,8 @@ After restaring the services, whenever you send any request to these services, y
 
 A brief explanation of the highlighted data is given below:
 
-|bank-service      |The name of the application.
-|04243c345de0e039  |Trace ID. It is attached to the main request. It remains same for all downstream calls.
-|e01dd2854ee0b039  |Span ID. It is attached to a service call. If the main request involves calls to 4 services, then each service call will have its own Span ID.
-|false             |Whether the trace information is being exported to any tracing server like Zipkin.
+| ------------- |:-------------:|
+|bank-service      |The name of the application.|
+|04243c345de0e039  |Trace ID. It is attached to the main request. It remains same for all downstream calls.|
+|e01dd2854ee0b039  |Span ID. It is attached to a service call. If the main request involves calls to 4 services, then each service call will have its own Span ID.|
+|false             |Whether the trace information is being exported to any tracing server like Zipkin.|
