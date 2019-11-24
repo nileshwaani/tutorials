@@ -1,1 +1,1 @@
-This tutorial demonstrates how we can use Logback to log information. Please visit my blog on [Introduction to Logback](http://localhost:4000/others/2019/11/23/Introduction-to-Logback.html).
+This tutorial demonstrates how we can use Logback to log information. Please visit my blog on [Introduction to Logback](https://nileshwaani.github.io/others/2019/11/24/Introduction-to-Logback.html).
