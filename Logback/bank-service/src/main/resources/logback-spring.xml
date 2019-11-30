@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true">
+  <property name="filePath" value="D://bank-service.log" />
+
+  <springProperty scope="context" name="application-name" source="spring.application.name"/>
+  <springProperty scope="context" name="active-profile" source="spring.profiles.active"/>
+
+  <appender name="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${filePath}</file>
+      <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <!-- daily rollover -->
+      <fileNamePattern>${filePath}.%d{yyyy-MM-dd}.gz</fileNamePattern>    
+      <!-- keep 30 days' worth of history capped at 3GB total size -->
+     <maxHistory>30</maxHistory>
+     <totalSizeCap>3GB</totalSizeCap>    
+   </rollingPolicy>
+
+   <encoder>
+     <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level [${application-name} - ${active-profile}] %logger{36} - %msg%n</pattern>
+   </encoder>
+ </appender>
+
+ <springProfile name="development">
+   <logger name="com.demo.bank" level="INFO"/> 
+ </springProfile>
+
+ <springProfile name="production">
+   <logger name="com.demo.bank" level="ERROR"/> 
+ </springProfile>
+
+ <root level="OFF">
+   <appender-ref ref="ROLLING_FILE"/>
+ </root>
+</configuration>
