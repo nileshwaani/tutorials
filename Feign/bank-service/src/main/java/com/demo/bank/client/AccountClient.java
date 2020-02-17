@@ -16,10 +16,11 @@ import com.demo.bank.domain.Transaction;
 @FeignClient(name = "ACCOUNT-SERVICE", url = "http://localhost:8080/accounts")
 public interface AccountClient {
 
-  @PostMapping
+  @PostMapping(headers = { "x-client=api" })
   public Account createAccount(@RequestBody Account account);
 
-  @GetMapping
+  // Passing a header parameter in the request.
+  @GetMapping(headers = { "x-client=api" })
   public List<Account> getAllAccounts();
 
   @GetMapping("/{accountId}")

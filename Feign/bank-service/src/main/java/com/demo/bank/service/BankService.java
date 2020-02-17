@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.demo.bank.client.AccountRestTemplate;
+import com.demo.bank.client.AccountClient;
 import com.demo.bank.domain.Account;
 import com.demo.bank.domain.Transaction;
 
@@ -19,7 +19,7 @@ public class BankService {
   private static final Logger LOGGER = LoggerFactory.getLogger(BankService.class);
 
   @Autowired
-  private AccountRestTemplate accountClient;
+  private AccountClient accountClient;
 
   public Account createAccount(Account account) {
     LOGGER.info("Creating account for {}", account.getAccountHolderName());
