@@ -33,17 +33,17 @@ public class BankController {
     return bankService.getAllAccounts();
   }
 
-  @GetMapping("/accounts/{accountId}")
+  @GetMapping("/accounts/{accountId:[0-9]\\d*}")
   public Account getAccount(@PathVariable("accountId") Long accountId) throws AccountException {
     return bankService.getAccount(accountId);
   }
 
-  @PostMapping("/accounts/{accountId}/deposit")
+  @PostMapping("/accounts/{accountId:[0-9]\\d*}/deposit")
   public Account deposit(@PathVariable("accountId") Long accountId, @RequestBody Transaction transaction) throws AccountException {
     return bankService.deposit(accountId, transaction);
   }
 
-  @PostMapping("/accounts/{accountId}/withdraw")
+  @PostMapping("/accounts/{accountId:[0-9]\\d*}/withdraw")
   public Account withdraw(@PathVariable("accountId") Long accountId, @RequestBody Transaction transaction) throws AccountException {
     return bankService.withdraw(accountId, transaction);
   }

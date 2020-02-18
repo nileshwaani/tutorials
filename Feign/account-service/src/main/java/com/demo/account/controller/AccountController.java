@@ -29,28 +29,28 @@ public class AccountController {
   private AccountService accountService;
 
   @PostMapping
-  public Account createAccount(@RequestHeader(value = "x-client") String client,  @RequestBody Account account) {
+  public Account createAccount(@RequestHeader(value = "x-client", required = false) String client,  @RequestBody Account account) {
     LOGGER.info("Header x-client = " + client);
     return accountService.createAccount(account);
   }
 
   @GetMapping
-  public List<Account> getAllAccounts(@RequestHeader(value = "x-client") String client) {
+  public List<Account> getAllAccounts(@RequestHeader(value = "x-client", required = false) String client) {
     LOGGER.info("Header x-client = " + client);
     return accountService.getAllAccounts();
   }
 
-  @GetMapping("/{accountId}")
+  @GetMapping("/{accountId:[0-9]\\d*}")
   public Account getAccount(@PathVariable("accountId") Long accountId) throws AccountException {
     return accountService.getAccount(accountId);
   }
 
-  @PostMapping("/{accountId}/deposit")
+  @PostMapping("/{accountId:[0-9]\\d*}/deposit")
   public Account deposit(@PathVariable("accountId") Long accountId, @RequestBody Transaction transaction) throws AccountException {
     return accountService.deposit(accountId, transaction);
   }
 
-  @PostMapping("/{accountId}/withdraw")
+  @PostMapping("/{accountId:[0-9]\\d*}/withdraw")
   public Account withdraw(@PathVariable("accountId") Long accountId, @RequestBody Transaction transaction) throws AccountException {
     return accountService.withdraw(accountId, transaction);
   }
