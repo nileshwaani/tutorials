@@ -21,6 +21,9 @@ public class SingleLinkedList {
     this.tail = tail;
   }
 
+  public SingleLinkedList() {
+  }
+
   /**
    * Creates a new Single Linked List with single node
    */
@@ -129,14 +132,13 @@ public class SingleLinkedList {
 
       temp = temp.getNextNode();
     }
-    
-    if(temp.getValue() == value) {
+
+    if (temp.getValue() == value) {
       return location + 1;
     }
 
     return 0;
   }
-
 
   /**
    * Delete the node at the beginning
@@ -184,14 +186,14 @@ public class SingleLinkedList {
   public void deleteNodeAtLocation(int location) {
     if (head == null) {
       return;
-    }      
+    }
 
     if (location == 1) {
       deleteNodeAtStart();
       return;
     }
-    
-    if(head == tail) {
+
+    if (head == tail) {
       head = tail = null;
       return;
     }
@@ -225,7 +227,7 @@ public class SingleLinkedList {
       temp = temp.getNextNode();
     }
     System.out.printf("%s %s -> ", temp.getValue(), temp == head && temp == tail ? "HT" : temp == head ? "H" : temp == tail ? "T" : "");
-    if(temp.getNextNode() == head) {
+    if (temp.getNextNode() == head) {
       System.out.printf("C");
     }
     System.out.println();
@@ -244,7 +246,7 @@ public class SingleLinkedList {
       temp = temp.getNextNode();
     }
     buffer.append(temp.getValue()).append(temp == head && temp == tail ? "HT" : temp == head ? "H" : temp == tail ? "T" : "").append(" -> ");
-    if(temp.getNextNode() == head) {
+    if (temp.getNextNode() == head) {
       buffer.append("C");
     }
     return buffer.toString();

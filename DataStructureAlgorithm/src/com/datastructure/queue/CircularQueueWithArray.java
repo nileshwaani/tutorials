@@ -75,7 +75,7 @@ public class CircularQueueWithArray {
    * Check if the queue is full
    */
   public boolean isFull() {
-    return topOfQueue - beginningOfQueue == array.length - 1 || topOfQueue == beginningOfQueue - 1;
+    return beginningOfQueue == 0 && topOfQueue == array.length - 1 || topOfQueue == beginningOfQueue - 1;
   }
 
   /**
