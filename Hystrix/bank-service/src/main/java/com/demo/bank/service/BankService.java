@@ -14,6 +14,7 @@ import com.demo.bank.client.AccountClient;
 import com.demo.bank.domain.Account;
 import com.demo.bank.domain.Transaction;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
 @Service
 public class BankService {
@@ -28,7 +29,11 @@ public class BankService {
     return accountClient.createAccount(account);
   }
 
-  @HystrixCommand(fallbackMethod = "getDefaultAccounts")
+  @HystrixCommand(fallbackMethod = "getDefaultAccounts",
+                  commandProperties = { @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliSeconds",
+                                                         value = "500")
+                                      }
+                 )
   public List<Account> getAllAccounts() {
     LOGGER.info("Getting all acccounts");
     return accountClient.getAllAccounts();
