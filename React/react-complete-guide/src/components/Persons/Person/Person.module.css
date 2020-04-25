@@ -1,0 +1,24 @@
+.Person {
+  width: 60%;
+  margin: 16px auto;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 3px #ccc;
+  padding: 16px;
+  text-align: center;
+}
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px;
+  margin: 0px 20px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+@media (min-width: 500px) {
+  .Person {
+    width: 450px;
+  }
+}
